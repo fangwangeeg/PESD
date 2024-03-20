@@ -14,6 +14,7 @@ This repository contains the source code of our paper, using the following datas
 
 
 ## Prerequisites
+Please follow the steps below in order to be able to train our models:
 
 1 - Download the four datasets and perform pre-processing and feature extraction using the code available in the [./PESD/feature_extract/]. The code while strictly following the official dataset description and the original publication in which the dataset was published.
 
