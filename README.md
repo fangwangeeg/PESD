@@ -10,7 +10,7 @@ This repository contains the source code of our paper, using the following datas
 
 - [DEAP](https://www.eecs.qmul.ac.uk/mmv/datasets/deap/): 32 subjects participated experiments with music videos as emotion stimuli (emotional states across arousal, valence, liking, and dominance, utilizing a scale from 1 to 9 for each video).  EEG was recorded with 32 channels at a sampling frequency of 512Hz.
 
-- [FACED](https://doi.org/10.7303/syn50614194): 123 subjects participated experiments with videos as emotion stimuli (nine emotional categories: amusement, inspiration, joy, tenderness; anger, fear, disgust, sadness, and neutral emotion). EEG was recorded with 32 channels at a sampling frequency of 1000Hz.
+- [FACED](https://doi.org/10.7303/syn50614194): 123 subjects participated experiments with videos as emotion stimuli (nine emotional categories: amusement, inspiration, joy, tenderness; anger, fear, disgust, sadness, and neutral emotion). EEG was recorded with 32 channels at a sampling frequency of 1000Hz.
 
 
 ## Prerequisites
