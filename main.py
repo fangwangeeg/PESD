@@ -19,7 +19,7 @@ def train(args, x_train, y_train, x_test, y_test, source_data, source_label, pre
 
     trainer = Trainer(model_pretrained, args.embed_dim, args.num_classes, args.temperature, args.alpha, args.learning_rate)
 
-    for epoch in range(epochs):
+    for epoch in range(args.epochs):
         trainer.train(train_dataloader, source_dataloader, args.model_name)
         test_loss, test_accuracy = trainer.eval(test_dataloader)
         print(f'Test Loss: {test_loss}, Test Accuracy: {test_accuracy}%')
@@ -30,6 +30,7 @@ if __name__ == "__main__":
     parser.add_argument("--dataset", type=str, default='SEED',help="Name of dataset for emotion recognition")
     parser.add_argument ("--pretrain_dataset", default='SEED',type = str, help = "Name of dataset for pretraining model")
     parser.add_argument("--model_name", type=str, default='PESD',help="Description of model_name")
+    parser.add_argument("--epochs", type=int, default=70, help="Number of epochs")
     parser.add_argument("--patch_size", type=str, default="(1, 62)", help="Description of patch_size")
     parser.add_argument("--image_size", type=str, default="(6, 62)", help="Description of image_size")
     parser.add_argument("--channel_num", type=int, default=1, help="Description of channel_num")
