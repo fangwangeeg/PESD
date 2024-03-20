@@ -17,7 +17,7 @@ def train(args, x_train, y_train, x_test, y_test, source_data, source_label, pre
     checkpoint = torch.load(pretrained_path)
     model_pretrained.load_state_dict(checkpoint)
 
-    trainer = Trainer(args.model_pretrained, args.embed_dim, args.num_classes, args.temperature, args.alpha, args.learning_rate)
+    trainer = Trainer(model_pretrained, args.embed_dim, args.num_classes, args.temperature, args.alpha, args.learning_rate)
 
     for epoch in range(epochs):
         trainer.train(train_dataloader, source_dataloader, args.model_name)
@@ -27,16 +27,9 @@ def train(args, x_train, y_train, x_test, y_test, source_data, source_label, pre
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--dataset", type=str, help="Name of dataset")
-    parser.add_argument ("--pretrain_dataset", type = str, help = "Name of dataset for pretraining model")
-    parser.add_argument("--record", type=str, help="Description of record")
-    parser.add_argument("--record_source", type=str, help="Description of record_source")
-    parser.add_argument("--data_dir", type=str, help="Description of data_dir")
-    parser.add_argument("--num_test_trail", type=int, help="Description of num_test_trail")
-    parser.add_argument("--num_trail_source", type=int, help="Description of num_trail_source")
-    parser.add_argument("--pretrained_path", type=str, help="Description of pretrained_path")
-    parser.add_argument("--model_name", type=str, help="Description of model_name")
-
+    parser.add_argument("--dataset", type=str, default='SEED',help="Name of dataset for emotion recognition")
+    parser.add_argument ("--pretrain_dataset", default='SEED',type = str, help = "Name of dataset for pretraining model")
+    parser.add_argument("--model_name", type=str, default='PESD',help="Description of model_name")
     parser.add_argument("--patch_size", type=str, default="(1, 62)", help="Description of patch_size")
     parser.add_argument("--image_size", type=str, default="(6, 62)", help="Description of image_size")
     parser.add_argument("--channel_num", type=int, default=1, help="Description of channel_num")
@@ -48,10 +41,10 @@ if __name__ == "__main__":
     parser.add_argument("--num_classes", type=int, default=3, help="Description of num_classes")
     args = parser.parse_args()
 
-    data_dir = get_data_dir (dataset)
-    num_trails = get_num_trails(dataset)
-    record_list = get_record_list(dataset)
-    pretrained_path = get_pretrained_path (pretrain_dataset)
+    data_dir = get_data_dir (args.dataset)
+    num_trails = get_num_trails(args.dataset)
+    record_list = get_record_list(args.dataset)
+    pretrained_path = get_pretrained_path (args.pretrain_dataset)
 
     for num_test_target in range (num_trails) :
         for record_num in range (record_list.shape[0]) :
